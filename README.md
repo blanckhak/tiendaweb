@@ -92,7 +92,7 @@ Si ese WhatsApp ya tenía pedidos, las dos cuentas se unen en una. Nunca se unen
 ### 2. Vercel (hosting)
 1. Sube el proyecto a GitHub e impórtalo en https://vercel.com.
 2. Carga todas las variables de `.env.example` (con `NEXT_PUBLIC_SITE_URL` = tu dominio).
-3. `vercel.json` programa el cron de automatizaciones cada 10 minutos. **El plan gratuito (Hobby) solo permite crons diarios**: usa el plan Pro o un cron externo gratuito (p. ej. cron-job.org) que llame a `https://TU-DOMINIO/api/cron/automatizaciones` con el header `Authorization: Bearer <CRON_SECRET>`.
+3. `vercel.json` programa el cron de automatizaciones una vez al día (9:00 de Perú), porque **el plan gratuito (Hobby) solo permite crons diarios** y rechaza el despliegue si son más seguidos. Para correrlas cada 10 minutos usa el plan Pro (y cambia `schedule` a `*/10 * * * *`) o un cron externo gratuito (p. ej. cron-job.org) que llame a `https://TU-DOMINIO/api/cron/automatizaciones` con el header `Authorization: Bearer <CRON_SECRET>`.
 
 > En Vercel no se puede usar la base local (`.data/`): el disco se borra. `DATABASE_URL` es obligatoria.
 
